@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compte Rendu | Tris</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="./js/section.js" defer></script>
+    <script src="./js/recherche.js" defer></script>
+    <script src="./js/script.js" defer></script>
+
+
+    
+</head>
+<body>
+    <nav>
+        <img src="./img/logo.png" alt="" onclick="showSection(1)">
+        <div>
+            <button class="link" onclick="showSection(3)">Recherche dans un tableau</button>
+            <button class="link" onclick="showSection(2)">Algorithmes de tri</button>
+        </div>
+    </nav>
+
+    <section id="section1">
+        <h1>Sélectionnez une des options ci-dessous ou<br> directement depuis la barre de navigation !</h1>
+        <p>Découvrez le concept de compléxité à travers différents algorithmes illustrés par des graphiques</p>
+        <div class="choix">
+            <div onclick="showSection(3)">
+                <img src="./img/chercher.png" alt="">
+                <h2>Recherche dans un tableau</h2>
+            </div>
+            <div onclick="showSection(2)">
+                <img src="./img/filtre.png" alt="">
+                <h2>Algorithmes de tri</h2>
+            </div>
+        </div>
+    </section>
+
+    <section id="section2">
+        <div class="buttons">
+            <button id="btnTriBulles" onclick="afficherTri('Tri à Bulles')">Tri à Bulles</button>
+            <button id="btnTriInsertion" onclick="afficherTri('Tri par Insertion')">Tri par Insertion</button>
+            <button id="btnTriFusion" onclick="afficherTri('Tri Fusion')">Tri Fusion</button>
+            <button id="btnComparerTris" onclick="afficherTri('Comparer les Tris')">Comparer les Tris</button>
+        </div>
+        <div class="tris">
+            <div id="ComparerTris">
+                <canvas id="graphique"></canvas>
+                <p class="description" id="descriptionComparerTris">
+                    Grâce au graphique ci-dessus, on peut remarquer que le tri à bulles, avec sa complexité quadratique O(n²) à un temps d'éxécution qui augmente considérablement à mesure que la taille du tableau augmente.
+                    <br>
+                    Concernant le tri par insertion, avec la complexité O(n²), il montre tout de même des temps d'éxécution bien plus faible que le tri à bulles.
+                    <br>
+                    Enfin, le tri fusion montre des temps d'éxecution beaucoup plus rapide que les deux autres et une augmentation beaucoup plus lente.
+                    <br>
+                    Je peux donc conclure que, le du tri fusion est beaucoup plus efficace pour des ensembles de données plus importants, tandis que le tri par insertion est à privilégié pour des ensembles de données plus petits ou partiellement triés.
+                </p>
+            </div>
+            <div id="TriBulles">
+                <canvas id="graphiqueTriBulles"></canvas>
+                <p class="description" id="descriptionTriBulles">
+                    Le tri à bulle est une méthode qui permet de comparer les éléments du tableau 2 à 2, puis les échanger si ils ne sont pas dans l'ordre. Les valeurs les plu spetites se déplacent progressivement vers le haut et les plus grandent se déplacent vers le bas.
+                    <br>
+                    Si il y a a n éléments à trier, le tri à bulles fait : n x (n-1) opérations pour traverser le tableau et trier, ce qui donne une compléxité quadratique notée O(n²).
+                    <br>
+                    Le temps d'éxécution croit proportionnelemnt au carré au nombre d'éléments du tableau.
+                    <br>
+                    Le tri à bulles est généralement inefficace pour de grandes quantités de données en raison de sa complexité quadratique.
+                </p>
+            </div>
+    
+            <div id="TriInsertion">
+                <canvas id="graphiqueTriInsertion"></canvas>
+                <p class="description" id="descriptionTriInsertion">
+                    Dans le tri par insertion, on considère le premier élément comme le plus petit (ou le plus grand) de la liste triée reçue. On prends cet élément et on le compare avec chacun des éléments de la liste triée puis on l'insère à sa place. On recommence avec chaque élément de la liste non triée.
+                    <br>
+                    Nous avons deux boucles imbriquées, le temps d'éxécution croit donc proportionnelemnt au carré du nombre d'éléments du tableau. Il s'agit d'une compléxité quadratique notée O(n²).
+                    <br>
+                    Le tri par insertion est plus efficace sur de petites quantités de données ou lorsque le tableau est déjà partiellement trié.
+                </p>
+            </div>
+    
+            <div id="TriFusion">
+                <canvas id="graphiqueTriFusion"></canvas>
+                <p class="description" id="descriptionTriFusion">
+                    L'algorithme de tri fusion commence par diviser le tableau non trié en deux parties égales. Cette étape est répétée jusqu'à ce que chaque sous-tableau ait une taille de 1 ou 0. Puis, chaque sous-tableau est trié avec le même prinicipe de division.
+                    <br>
+                    Une fois que les sous-tableaux sont triés, ils sont fusionnés.
+                    <br>
+                    Cet algorithme est composé de deux parties : une partie division et une partie fusion, de ce fait la compléxité est quasi-linéaire noté O(nlog(n)).
+                    Cette compléxité le rends rapide pour trier les grandes quantités de données.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="section3" style="display: none;">
+        <h1>Recherche dans un tableau</h1>
+        <div class="recherche">
+            <div>
+                <canvas id="rechercher" style="display: block; box-sizing: border-box; height: auto; width: 100%;"></canvas>
+            </div>
+            <div>
+                <h2>Analyse</h2>
+                <p>
+                    La compléxité temporelle d'un algorithme désigne la mesure du temps qu'il nécessite pour résoudre un problème en fonction de la taille en entrée, elle s'exprime avec O.
+                    <br>
+                    Ici, nous avons deux algorithmes, un algorithme de recherche dichotomique et un algorithme de recherche naïve.
+                    <br>
+                    La complexité de l'algorithme de recherche dichotomique est logarithmique, notée O(log (n)). En effet, on effectue une division par 2 à chaque itération
+                    A chaque étape, la moitié des éléments restant est éliminé, ce qui permet de chercher efficacement des éléments dans de grands ensembles de données.
+                    <br>
+                    La complexité de l'algorithme de recherche naïf est linéaire : O(n). En effet, à chaque itération, l'algorithme compare l'élément actuel du tableau à la cible recherché. On parcours le tableau élément par element. <br>
+                    Plus la taille du tableau augmente, plus le temps nécessaire pour effectuer la recherche augmente de manière linéaire. De ce fait, c'est une méthode peu efficace pour les tableaux de grande taille.
+                    <br>
+                    Comme nous pouvons le remarquer sur le graphique, pour la recherche dichotomique, les temps de recherche restent  constants à mesure que la taille du tableau augmente; Tandis que pour la recherche naïve, les temps de recherches augmentent de manière linéaire à mesure que la taille du tableau augmente.
+                    <br>
+                    Donc, la recherche dichotomique est plus efficace pour des tableaux de grandes tailles que la recherche naïve. 
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    
+</body>
+</html>

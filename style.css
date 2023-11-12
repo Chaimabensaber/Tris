@@ -1,0 +1,199 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 35px;
+    margin-bottom: 50px;
+}
+
+nav img {
+    width: 60px;
+    cursor: pointer;
+}
+
+nav div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+nav div button {
+    background: transparent;
+    border: none;
+    font-family: 'Poppins';
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 25px;
+    padding: 0 20px;
+    transition: ease 0.2s;
+    padding: 5px 20px;
+}
+
+nav div button:hover {
+    background-color: #cbd3f3;    
+    transition: ease 0.2s;
+}
+
+#section1 {
+    padding: 2vh 15vw;
+}
+
+#section1 h1, p{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#section1 h1 {
+    text-align: center;
+    font-size: 2.3em;
+}
+
+#section1 p {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+#section1 .choix {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 65px;
+}
+
+#section1 .choix div {
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 187px;
+    height: 217px;
+    padding: 20px;
+    gap: 20px;
+    cursor: pointer;
+}
+
+#section1 .choix div h2 {
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+#section1 .choix div:nth-child(1) {
+    background-color: #cbd3f3;
+    border: solid 4px #cbd3f3;
+    transition: linear 0.2s;
+}
+
+#section1 .choix div:nth-child(1):hover {
+    border: solid 4px #4a5a99;
+    transition: linear 0.2s;
+}
+
+#section1 .choix div:nth-child(1) h2 {
+    color: #4a5a99;
+}
+
+#section1 .choix div:nth-child(2) {
+    background-color: #ffe4e7;
+    border: solid 4px #ffe4e7;
+    transition: linear 0.2s;
+}
+
+#section1 .choix div:nth-child(2):hover {
+    border: solid 4px #de717d;
+    transition: linear 0.2s;
+}
+
+#section1 .choix div:nth-child(2) h2 {
+    color: #de717d;
+}
+
+#section1 .choix div img {
+    width: 60px;
+}
+
+#section2 {
+    padding: 0 6vw;
+}
+
+#section2 p {
+    text-align: left;
+}
+
+#section2 .buttons {
+    margin-bottom: 50px;
+}
+
+#section2 .buttons button {
+    background: transparent;
+    border: solid 2px #cbd3f3;
+    border-radius: 25px;
+    width: fit-content;
+    padding: 5px 25px;
+    font-size: 1em;
+    font-family: 'Poppins';
+
+    cursor: pointer;
+    transition: ease 0.2s;
+}
+
+#section2 .buttons button:hover, button:active, button:focus, button:active {
+    background: #cbd3f3;
+    transition: ease 0.2s;
+}
+
+#section2 .tris {
+    width: 60%;
+}
+
+.tris canvas {
+    display: none;
+}
+
+#section3 {
+    padding: 2vh 6vw;
+}
+
+#section3 h1 {
+    font-size: 2.3em;
+    margin-bottom: 50px;
+}
+
+#section3 .recherche {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+#section3 .recherche div {
+    box-shadow: 0px 0px 30px lightgrey;
+    border-radius: 30px;
+    padding: 20px;
+}
+
+#section3 .recherche div:nth-child(1) {
+    width: 40vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#section3 .recherche div:nth-child(2) {
+    width: 40%;
+}
+
+#section3 .recherche div p {
+    text-align: left;
+}
+
+.description {
+    display: none;
+}
