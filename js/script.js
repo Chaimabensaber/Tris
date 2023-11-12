@@ -1,4 +1,3 @@
-// Fonction JS pour générer un tableau aléatoire de taille donnée et les chiffres seront compris entre 0 et 999
 function genereTableauAleatoire(taille) {
     const randomArray = [];
     for (let i = 0; i < taille; i++) {
@@ -9,8 +8,7 @@ function genereTableauAleatoire(taille) {
 
 function triABulles(tableau) {
     const n = tableau.length;
-    let tempsDebut = performance.now(); // Mesure le temps de début
-
+    let tempsDebut = performance.now();
     for (let i = 0; i < n - 1; i++) {
         for (let j = 0; j < n - i - 1; j++) {
             if (tableau[j] > tableau[j + 1]) {
@@ -21,13 +19,13 @@ function triABulles(tableau) {
         }
     }
 
-    let tempsFin = performance.now(); // Mesure le temps de fin
-    return tempsFin - tempsDebut; // Retourne le temps d'exécution
+    let tempsFin = performance.now(); 
+    return tempsFin - tempsDebut; 
 }
 
 function triParInsertion(tableau) {
     const n = tableau.length;
-    let tempsDebut = performance.now(); // Mesurer le temps de début
+    let tempsDebut = performance.now();
 
     for (let i = 1; i < n; i++) {
         const valeurCourante = tableau[i];
@@ -41,20 +39,20 @@ function triParInsertion(tableau) {
         tableau[j + 1] = valeurCourante;
     }
 
-    let tempsFin = performance.now(); // Mesurer le temps de fin
-    return tempsFin - tempsDebut; // Retourner le temps d'exécution
+    let tempsFin = performance.now();
+    return tempsFin - tempsDebut;
 }
 
 function triFusion(tableau) {
     if (tableau.length <= 1) {
-        return tableau; // Si le tableau est vide ou a une seule valeur, il est déjà trié.
+        return tableau; 
     }
 
     const milieu = Math.floor(tableau.length / 2);
     const gauche = tableau.slice(0, milieu);
     const droite = tableau.slice(milieu);
 
-    return fusionner(triFusion(gauche), triFusion(droite), milieu); // Correction ici
+    return fusionner(triFusion(gauche), triFusion(droite), milieu);
 }
 
 function fusionner(gauche, droite, milieu) {
@@ -75,7 +73,7 @@ function fusionner(gauche, droite, milieu) {
     return tableau.concat(gauche.slice(i), droite.slice(j));
 }
 
-// Déclarez le graphique en dehors de la fonction pour qu'il soit accessible globalement
+
 const canvasGraphique = document.getElementById("graphique");
 const graphique = new Chart(canvasGraphique, {
     type: "line",
@@ -117,7 +115,7 @@ for (const taille of taillesDeTableau) {
     donneesTriInsertion.push({ taille: taille, temps: tempsTriInsertion });
 
     const tempsDebut = performance.now();
-    triFusion([...tableauAleatoire]); // Tri fusion sans retourner le tableau
+    triFusion([...tableauAleatoire]);
     const tempsFin = performance.now();
     const tempsExecution = tempsFin - tempsDebut;
     donneesTriFusion.push({ taille: taille, temps: tempsExecution });
@@ -127,15 +125,10 @@ for (const taille of taillesDeTableau) {
     console.log(`Tri fusion pour un tableau de taille ${taille}: ${tempsExecution} ms`);
 }
 
-// Récupérez le bouton pour comparer les tris
 const btnComparerTris = document.getElementById("btnComparerTris");
-
-// Ajoutez un gestionnaire d'événements de clic au bouton pour comparer les tris
 btnComparerTris.addEventListener("click", () => afficherGraphiqueComparatif());
 
-// Fonction pour afficher le graphique comparatif des trois tris
 function afficherGraphiqueComparatif() {
-    // Mettez à jour les données du graphique existant avec les trois ensembles de données
     graphique.data.labels = taillesDeTableau;
     graphique.data.datasets = [
         {
@@ -161,23 +154,18 @@ function afficherGraphiqueComparatif() {
         },
     ];
 
-    // Mettez à jour le graphique
     graphique.update();
 }
 
-// Récupérez les boutons
 const btnTriBulles = document.getElementById("btnTriBulles");
 const btnTriInsertion = document.getElementById("btnTriInsertion");
 const btnTriFusion = document.getElementById("btnTriFusion");
 
-// Ajoutez des gestionnaires d'événements de clic aux boutons
 btnTriBulles.addEventListener("click", () => afficherGraphique(donneesTriBulles, "Tri à Bulles"));
 btnTriInsertion.addEventListener("click", () => afficherGraphique(donneesTriInsertion, "Tri par Insertion"));
 btnTriFusion.addEventListener("click", () => afficherGraphique(donneesTriFusion, "Tri Fusion"));
 
-// Fonction pour afficher le graphique en fonction des données et du label
 function afficherGraphique(donnees, label) {
-    // Mettez à jour les données du graphique existant
     graphique.data.labels = donnees.map((donnee) => donnee.taille);
     graphique.data.datasets = [
         {
@@ -189,11 +177,8 @@ function afficherGraphique(donnees, label) {
         },
     ];
 
-    // Mettez à jour le graphique
     graphique.update();
 }
-
-// Fonction pour obtenir une couleur en fonction du label
 function getColor(label) {
     switch (label) {
         case "Tri à Bulles":
@@ -209,22 +194,18 @@ function getColor(label) {
 
 
 
-// Fonction pour afficher le texte correspondant au graphique
 function afficherTexte(descriptionId) {
-    // Cacher tous les paragraphes
     const paragraphs = document.querySelectorAll('.description');
     paragraphs.forEach(paragraph => {
         paragraph.style.display = 'none';
     });
 
-    // Afficher le paragraphe correspondant à l'ID
     const descriptionElement = document.getElementById(descriptionId);
     if (descriptionElement) {
         descriptionElement.style.display = 'block';
     }
 }
 
-// Ajoutez des gestionnaires d'événements de clic aux boutons
 btnTriBulles.addEventListener("click", () => {
     afficherGraphique(donneesTriBulles, "Tri à Bulles");
     afficherTexte("descriptionTriBulles");
